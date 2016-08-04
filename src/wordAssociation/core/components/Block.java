@@ -6,25 +6,27 @@ import java.util.List;
 /**
  * Defines the interface for word block
  * 
- * @author Zevran
- * 
  */
 public interface Block {
 
 	/**
-	 * Getter
-	 * @return data that resides on the block
+	 * A getter that fetch the data content contained by the block
+	 * 
+	 * @return Data content that resides on the block
 	 */
 	String getData();
 	
 	/**
-	 * Getter
+	 * Get the list of neighbors of the block in the graph 
+	 *
 	 * @return neighbor blocks
 	 */
 	List<String> getNeighbor();
 	
 	/**
-	 * Setter
+	 * Add a new neighbor to the block in the graph
+	 * 
+	 * @param newNeighbor A String representing the new neighbor to be added
 	 */
-	void setNeighbor(ArrayList<String> neightbor);
+	void addNeighbor(String newNeighbor);
 }

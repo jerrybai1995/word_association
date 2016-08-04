@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Word implements Block {
-	private boolean hidden;
+	protected boolean hidden;
 	private String data;
 	private List<String> neighbor;
 	
@@ -17,9 +17,15 @@ public class Word implements Block {
 	 */
 	public Word(String name, List<String> neighbors) {
 		this.data = name;
-		this.neighbor = neighbors;
+		this.neighbor = new ArrayList<String>(neighbors);   // Duplicate the list
 	}
 	
+	public Word(Word word) {
+		this.hidden = word.hidden;
+		this.data = word.data;
+		this.neighbor = new ArrayList<String>(word.neighbor);
+	}
+
 	/**
 	 * Reveal the data on the block
 	 */
@@ -34,9 +40,9 @@ public class Word implements Block {
 	public List<String> getNeighbor() {
 		return neighbor;
 	}
-
-	public void setNeighbor(ArrayList<String> neighbor) {
-		this.neighbor = neighbor;
+	
+	public void addNeighbor(String newNeighbor) {
+		this.neighbor.add(newNeighbor);
 	}
 	
 	@Override
@@ -50,4 +56,6 @@ public class Word implements Block {
 		}
 		return getData();
 	}
+
+	
 }
